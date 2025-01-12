@@ -1,5 +1,6 @@
 package com.theta.jpa_study.service
 
+import com.theta.jpa_study.entity.Address
 import com.theta.jpa_study.entity.User
 import org.junit.jupiter.api.Test
 
@@ -15,7 +16,7 @@ class UserServiceTest @Autowired constructor(
 ) {
 
     @Test
-    fun `saveUser`() {
+    fun `사용자 저장 및 조회`() {
         val user = User(name = "Theta", email = "Theta@gmail.com")
         val saveUser = userService.saveUser(user)
 
@@ -23,5 +24,4 @@ class UserServiceTest @Autowired constructor(
         assertEquals("Theta", saveUser.name)
         assertEquals("Theta@gmail.com", saveUser.email)
     }
-
 }

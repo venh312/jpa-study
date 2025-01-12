@@ -13,5 +13,12 @@ data class User(
     val name: String,
 
     @Column(nullable = false, unique = false)
-    val email: String
+    val email: String,
+
+    @OneToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "address_id") // 외래 키 설정
+    val address: Address? = null,
+
+    @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    val orders: List<Order> = mutableListOf()
 )
